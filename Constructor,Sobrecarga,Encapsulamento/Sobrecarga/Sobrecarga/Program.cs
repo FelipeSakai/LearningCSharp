@@ -14,9 +14,9 @@ Console.WriteLine("Havera Deposito ? ");
 char resp = char.Parse(Console.ReadLine());
 if (resp == 's' || resp== 'S')
 {
-    Console.WriteLine("Digite o valor para deposito: ");
+    Console.WriteLine("Digite o valor para deposito Inicial: ");
     double depositoInicial = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
-    conta = new Bancaria(numero, nome);
+    conta = new Bancaria(numero, nome,depositoInicial);
 }
 else
 {
