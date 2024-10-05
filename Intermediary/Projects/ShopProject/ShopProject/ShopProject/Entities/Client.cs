@@ -26,5 +26,14 @@ namespace ShopProject.Entities
             Email = email;
             BirthDate = birthDate;
         }
+
+        public override string ToString()
+        {
+            return Name
+                + ","
+                +Email 
+                +" ("
+                + BirthDate.ToString("dd/MM/yyyy)");
+        }
     }
 }

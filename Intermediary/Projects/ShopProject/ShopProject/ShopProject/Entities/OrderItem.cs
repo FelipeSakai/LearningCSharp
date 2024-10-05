@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace ShopProject.Entities
 {
@@ -12,21 +8,34 @@ namespace ShopProject.Entities
 
         public double Price { get; set; }
 
+        public Product Product { get; set; }
+
 
         public OrderItem()
         {
 
         }
 
-        public OrderItem(int quantity, double price)
+        public OrderItem(int quantity, double price, Product product)
         {
             Quantity = quantity;
             Price = price;
+            Product = product;
         }
 
         public double subTotal()
         {
-            return  Quantity * Price;
+            return Price * Quantity;
         }
+
+        public override string ToString() => Product.Name
+                + ", $"
+                + Price.ToString("F2", CultureInfo.InvariantCulture)
+                + ", Quantity: "
+                + Quantity
+                + "Total: "
+                + subTotal().ToString("F2", CultureInfo.InvariantCulture)
+                ;
+
     }
 }

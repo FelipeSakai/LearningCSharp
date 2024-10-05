@@ -22,5 +22,6 @@ namespace ShopProject.Entities
             Name = name;
             Price = price;
         }
+
     }
 }

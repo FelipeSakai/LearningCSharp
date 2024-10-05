@@ -1,6 +1,7 @@
 ﻿using ShopProject.Entities.Enum;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,11 +43,27 @@ namespace ShopProject.Entities
         public double Total()
         {
             double sum = 0.0;
-            foreach(OrderItem item in Items)
+            foreach (OrderItem item in Items)
             {
                 sum += item.subTotal();
             }
             return sum;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Order Moment: " + Moment.ToString("dd/MM/yyyy HH:mm:ss"));
+            sb.AppendLine("Order Status: " + Status);
+            sb.AppendLine("Client: " + Client);
+
+            foreach (OrderItem item in Items)
+            {
+                sb.AppendLine(item.ToString());
+            }
+
+            sb.AppendLine("Total Price $" + Total().ToString("F2", CultureInfo.InvariantCulture));
+            return sb.ToString();
         }
     }
 }
